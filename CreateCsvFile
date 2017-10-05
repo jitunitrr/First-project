@@ -1,0 +1,51 @@
+package com.java.createcsvfile;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CreateCsvFile {
+
+private static void generateCsvFile(String fileName) {
+
+      FileWriter writer = null;
+
+ try {
+
+     writer = new FileWriter(fileName);
+     writer.append("Name");
+     writer.append(',');
+     writer.append("Number");
+     writer.append('\n');
+
+     writer.append("interview questions");
+     writer.append(',');
+     writer.append("001");
+     writer.append('\n');
+
+     writer.append("interview programs");
+     writer.append(',');
+     writer.append("002");
+     writer.append('\n');
+
+     System.out.println("CSV file is created...");
+
+  } catch (IOException e) {
+     e.printStackTrace();
+  } finally {
+        try {
+      writer.flush();
+      writer.close();
+        } catch (IOException e) {
+      e.printStackTrace();
+}
+}
+}
+
+public static void main(String[] args) {
+
+ String location = "E:\\newCsvFile.csv";
+ generateCsvFile(location);
+
+}
+
+}
