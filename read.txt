@@ -1,0 +1,35 @@
+hello these are all the instructions...i have reattach the files that needs to be used as well in the project. it needs to done on eclipse in Java. 
+Late submission will NOT get credits. 
+But you can submit parts of the project to get partial credits.
+Only submit source files. Do NOT include executables. All files should be packed into a single zip file and be submitted via blackboard. Use .zip file extension, not other extensions (.rar, .jar, gz, etc).
+Do NOT change the main file (SLLMainClass.java). Only change SortedSLLClass.java file. You can add new ones if you wish. But the main function and the parse function should NOT be changed.
+The zip file name should be: HW1-FirstName-LastName.zip
+In the zip file, include a text file: README.txt. Write down which problems have you finished. Also write down on which platform (mac, linux, window) is the code compiled and executed. 
+You are NOT allowed to use any native implementation of lists (ArrayList, LinkedList, etc.). Consult the instructor if you want to use any native class that is not mentioned here. 
+Ensure your code can be compiled and executed in command line (not a java IDE). Otherwise, you will NOT get any credits. In command line, do the follows:
+$ javac SLLMainClass.java 
+$ javac SortedSLLClass.java
+$ java SLLMainClass Data/SZ5_Test0_Input0.txt Data/SZ5_Test0_Input1.txt Data/SZ5_Test0_Input2.txt
+This will run the code to read in three input files, merge them, and then report merging result and running time. Try starting with 1 input file as input, and continue with more inputs. Also try inputs with different size (5, 10, 30, 100, 300, 1000, 3000, 10000).
+The README.txt and command line compilation are required. If no README or command line compilation fails, you will lose points.
+
+
+Problem 1 (4 pts): 
+Implement basic functions of a sorted singly linked list 
+It has all elements sorted in an increasing order
+It does not have repeating elements
+Implement the insert function
+Implement the getAllElement function
+Implement the merge_naive function
+It merges another sorted list into the current one, by going through its element one by one and call the insert function.
+
+Problem 2 (4 pts):
+Implement the merge_smart function 
+It merges another sorted list into the current one using the smart merging strategy (refer to class notes).
+
+Problem 3 (2 pts):
+Try the implemented method on different input data. For different size, you have three tests. Each test has three input files. So for each size, you can have three tests and take the average smart/naïve merging time. 
+Draw a plot of the two merging methods scaling with regard to different input size.
+Write a report of the experiments. 
+In report, besides the experiment, also do an analysis of the complexity of the two merging methods.
+Experiment and analysis each worth one point.
