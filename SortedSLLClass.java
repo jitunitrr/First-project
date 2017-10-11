@@ -5,66 +5,52 @@ public class SortedSLLClass {
 	class Node{
 		int value;
 		Node next;
+		Node(int val){value=val;next=null;}
 	}
-	Node currentSSLL=null;
+	Node currentSSLL;
 	
 	// constructor
 	public SortedSLLClass(){
-		// fill in
-		//otherSSLL=new SortedSLLClass();
-		currentSSLL=new Node();
+		currentSSLL=null;
 	}
 
 	// copy constructor: copy the content of otherSSLL into this one
 	// you need this constructor
 	public SortedSLLClass(SortedSLLClass otherSSLL){
-		// fill in
 		this.currentSSLL=otherSSLL.currentSSLL;
 	}
 	
 	// insert an integer value into the list
 	public boolean insert(int val){
-		Node temp=new Node();
-		temp.value=val;
-		temp.next=null;
-		
-				if(currentSSLL==null){
+		Node temp=new Node(val);
+				if(currentSSLL==null || currentSSLL.value> temp.value){
+					temp.next=currentSSLL;
 					currentSSLL=temp;
 				}else{
 							Node currentNode=currentSSLL;
-							Node prevNode=null;
-							Node pos=null;
-							while(currentNode!=null){
-									if(temp.value==currentNode.value)
-											return false;
-									else if(temp.value<currentNode.value){
-													pos=currentNode;
-									}
-									prevNode=currentNode;
+							
+							while(currentNode.next!=null && currentNode.next.value < temp.value){
 									currentNode=currentNode.next;
 							}
-							if(prevNode==pos){
-								 temp.next=currentSSLL;
-								 currentSSLL=temp;
-							}else if(pos==null){
-								prevNode.next=temp;
-							}else{
-								prevNode.next=temp;
-								temp.next=pos;
-							}
+									temp.next=currentNode.next;
+									currentNode.next=temp;
+							
+
+							
 								
 								
 				}
+
 		return true;
 	}
 
 	// merge otherSSLL into the current list (naive)
 	// read and insert elements from otherSSLL one-by-one into this list
 	public void merge_naive(SortedSLLClass otherSSLL){
-		// fill in
 		Node otherListNode=otherSSLL.currentSSLL;
 		while(otherListNode!=null){
 			insert(otherListNode.value);
+			otherListNode=otherListNode.next;
 		}
 					
 	}
@@ -138,7 +124,6 @@ public class SortedSLLClass {
 	
 	// get all elements of the list, store them in an array
 	public int[] getAllElements(){
-		// dummy code, replace it for your own program
 		Node temp=currentSSLL;
 		int k=0;
 		while(temp!=null){
@@ -150,9 +135,11 @@ public class SortedSLLClass {
 		int[] a = new int[k];
 		int i=0;
 		while(temp!=null){
-				a[i++]=temp.value;
-			temp=temp.next;		
-      }
+				a[i]=temp.value;
+			temp=temp.next;
+			i++;		
+     		 }
 		return a;
 	}
+	
 }
