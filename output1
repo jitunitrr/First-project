@@ -1,0 +1,24 @@
+patientArrives 1110 Alex 2
+
+doctorStartsTreatingPatient 1110 Alice Alex
+
+patientArrives 1111 John 3
+
+doctorStartsTreatingPatient 1111 Bob John
+
+patientArrives 1112 Chad 5
+
+patientArrives 1113 Sharron 1
+
+patientArrives 1114 Kelcey 3
+
+doctorFinishesTreatmentAndPatientDeparts 1119 Bob John
+doctorStartsTreatingPatient 1119 Bob Sharron
+
+updatePatientESI 1122 Chad 2
+
+doctorFinishesTreatmentAndPatientDeparts 1126 Alice Alex
+doctorStartsTreatingPatient 1126 Alice Chad
+patientDepartsAfterNurseTreatment 1135 Kelcey
+doctorFinishesTreatmentAndPatientDeparts 1142 Alice Chad
+doctorFinishesTreatmentAndPatientDeparts 1151 Bob Sharron

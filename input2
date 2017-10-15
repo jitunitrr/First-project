@@ -1,0 +1,25 @@
+patientArrives 1110 Alex 5
+patientArrives 1111 John 1
+patientArrives 1112 Chad 5
+patientArrives 1113 Sharron 3
+patientArrives 1114 Kelcey 4
+patientArrives 1115 Hal 2
+patientArrives 1116 Abbie 4
+patientArrives 1117 Jerald 4
+patientArrives 1118 Emily 3
+patientArrives 1119 Leo 2
+updatePatientESI 1120 Hal 5
+patientArrives 1120 Shawn 5
+patientArrives 1121 Mike 3
+patientDepartsAfterNurseTreatment 1122 Shawn
+patientArrives 1122 Andrew 3
+patientDepartsAfterNurseTreatment 1123 Emily
+patientArrives 1123 Carl 3
+patientDepartsAfterNurseTreatment 1124 Mike
+patientArrives 1124 Jessica 5
+patientDepartsAfterNurseTreatment 1125 Carl
+doctorArrives 1125 Carol
+patientDepartsAfterNurseTreatment 1130 Abbie
+updatePatientESI 1131 Kelcey 3
+patientDepartsAfterNurseTreatment 1139 Hal
+updatePatientESI 1140 Jessica 4

@@ -1,0 +1,7 @@
+patientArrives 1110 Alex 2
+patientArrives 1111 John 3
+patientArrives 1112 Chad 5
+patientArrives 1113 Sharron 1
+patientArrives 1114 Kelcey 3
+updatePatientESI 1122 Chad 2
+patientDepartsAfterNurseTreatment 1135 Kelcey
