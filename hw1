@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+public class VowelCountYourLastName {
+
+	public static void main(String[] args) {
+		String input;
+		int countvowel = 0, county = 0;
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Please enter a word ");
+		input = sc.next();
+
+		for (int i = 0; i < input.length(); i++) {
+			if ((input.charAt(i) == 'a') || (input.charAt(i) == 'e') || (input.charAt(i) == 'i')
+					|| (input.charAt(i) == 'o') || (input.charAt(i) == 'u') || (input.charAt(i) == 'A')
+					|| (input.charAt(i) == 'E') || (input.charAt(i) == 'I') || (input.charAt(i) == 'O')
+					|| (input.charAt(i) == 'U')
+
+			) {
+				countvowel++;
+			} else if ((input.charAt(i) == 'y') || (input.charAt(i) == 'Y')) {
+				county++;
+
+			}
+
+		}
+
+		if (countvowel > 0) {
+			System.out.println(countvowel + " vowel in " + input);
+		}
+		if (county > 0) {
+			System.out.println(county + " y in " + input);
+		} 
+		if(countvowel==0 && county==0){
+			System.out.println("you must have done a spelling mistake somewhere.");
+
+		}
+
+	}
+
+}
+*******************************************************************************************
+
+public class MultiplicationTableYourLastName {
+
+	public static void main(String[] args) {
+		int row = 1, col = 1;
+
+		for (row = 1; row <= 12; row++) {
+			for (col = 1; col <= 12; col++)
+
+			{
+				System.out.printf("%4d", row * col);
+			}
+			System.out.println();
+		}
+	}
+}
+**************************************************************
+import java.util.Random;
+import java.util.Scanner;
+
+public class RandomNumberYourLastName {
+
+	public static void main(String[] args) {
+		
+		int num;
+		int lowestNum,highestNum;
+		int randomNum;
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.print("How many random number do you want to see: ");
+		num=sc.nextInt();
+
+		System.out.print("Smallest number: ");
+		lowestNum=sc.nextInt();
+		
+		System.out.print("Largest number: ");
+		highestNum=sc.nextInt();
+		
+		Random rand= new Random();
+		
+		for(int i=1;i<=num;i++)
+		{ 	
+			randomNum=rand.nextInt(highestNum)+lowestNum;
+			System.out.println(randomNum);
+		}
+	}
+
+}
