@@ -1,0 +1,37 @@
+# Python Program - Calculate Area of Triangle
+# Read input values when "enter 'y'
+
+import math
+
+while True:
+    print("Enter 'y' for exit.")
+    side1 = input("Enter dimension of first side: ")
+    side2 = input("Enter dimension of second side: ")
+    side3 = input("Enter dimension of third side: ")
+    if side1 == 'y':
+        break
+    else:
+            count = 1
+            try:
+                   a = float(side1)
+            except ValueError:
+                    while count<=4:
+                        side1 = input("Enter dimension of first side: ")
+                        try:
+                          a = float(side1)
+                          break
+                        except ValueError:
+                            print(side1+" That's not an int!")
+                            print((4-count)+" attemp left!")
+                            count=count+1
+                            continue
+                         
+            a = float(side1)
+            b = float(side2)
+            c = float(side3)
+# calculate the semi-perimeter
+            s = (a + b + c)/2
+# calculate the area
+            area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
+            print("Area of Triangle = %0.2f" %area)
+
