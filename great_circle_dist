@@ -1,0 +1,21 @@
+from math import radians,cos,sin,asin,sqrt
+#Read the input from user
+print("Enter the latitute and longitude of two points on Earth in degrees.")
+lat1=float(input("Latitute 1:"))
+lat2=float(input("Latitute 2:"))
+lon1=float(input("Longitute 1:"))
+lon2=float(input("Longitute 2:"))
+    #try and convert the string input to a number
+    #tell the user off
+    #The math module contains a function named radians which converts from degrees to radians.
+lat1=radians(lat1)
+lat2=radians(lat2)
+lon1=radians(lon1)
+lon2=radians(lon2)
+    #Haversine formula
+dlon=lon2-lon1;
+dlat=lat2-lat1;
+a=sin(dlat/2)**2+cos(lat2)*sin(dlon/2)**2
+c=2*asin(sqrt(a))
+r=6300  # radius of earth in kilometers.
+print("Distance is:",c*r,"kilometers")
