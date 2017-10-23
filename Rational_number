@@ -108,8 +108,14 @@ class Rational(object):
         
 
 # ------------------------------ MAIN ------------------------------
-r1=Rational(10,5)
-r2=Rational(5,10)
-print("addition",r1.__add__(r2))
-print("multiplication",r1.__mul__(r2))
-print("division",r1.__div__(r2))
+def main():
+    r1=Rational(10,5)
+    r2=Rational(5,10)
+    print("First Rational Number: ",r1.__str__())
+    print("Second Rational Number: ",r2.__str__())
+    print("Addition",r1.__add__(r2))
+    print("Subtraction",r1.__sub__(r2))
+    print("Multiplication",r1.__mul__(r2))
+    print("Division",r1.__div__(r2))
+if __name__ == "__main__":
+    main()
