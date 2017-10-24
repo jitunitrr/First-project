@@ -1,0 +1,103 @@
+
+QUESTIONS
+1.	[1] Why does a different version of stat(), lstat(), exist that treats symbolic links differently? Why isn't a different version needed for hard links?
+Answer: For most directory-tree-traversing programs, including findbin, it's important to use lstat(), as follows.
+For the most part, if you attempt to access a symbolic link, the kernel follows this symbolic link automatically, giving you instead the file that the symlink points to. If this weren't the case, then symlinks wouldn't mean what they do mean. A symlink is a stand-in for the pointed-to file.
+But you can't have the kernel always following symlinks, only almost-always. For example, an ls −R, or find, would get very confused by symlinks if it called stat() rather than lstat(). In particular, if a symlink points to a parent directory, then to opendir that symlink and continue traversing from there will result in infinite recursion.
+So when symlinks were introduced, a dozen or so programs needed to be modified to be able to continue to work in their presence. These days, many more programs need to be aware of symlinks. Anything which traverses a directory tree needs to treat symlinks-which-point-to-a-directory differently from directories. Programs such as "ls" need to collect information on the symlink, rather than the pointed-to file.
+The way to do this is to call the special call "lstat()", which is like stat() so long as its parameter is not a symlink. If its parameter is a symlink, it does not follow the symlink, but rather, reports information about the symlink itself.
+Thus for example, "ls −l" calls lstat(), not stat(). There is an option '−L' to make it follow the symlinks, but otherwise it doesn't.
+For more examples: "test −f" calls stat(), but "test −L" (check whether the file is a symlink) needs to call lstat().
+box has no reason to call stat() or lstat(), but if it did, it would call stat, not lstat, because we do want it to follow symlinks, in the normal way.
+
+2.	[1] How can you modify 3000pc so the producer stops producing once it fills the queue?
+Answer: call either wait_for_consumer(shared *s)or set the the 
+s->prod_waiting = 1;
+3.	[1] Under what circumstances is fill_rand_buffer() called in 3000random?
+Answer: fill random buffer
+
+4.	[1] If the two signal handling functions in 3000pc were replaced by one function, would there be any significant loss of functionality? Briefly explain.
+Answer: For this two handler
+void producer_handler(int the_signal)
+{
+        if (the_signal == SIGUSR1) {
+                fprintf(stderr, "Producer received SIGUSR1.\n");
+                return;
+
+        } else {
+                fprintf(stderr, "Producer: No handler for for signal %d?!\n",
+                        the_signal);
+                return;
+        }
+}
+
+void consumer_handler(int the_signal)
+{
+        if (the_signal == SIGUSR1) {
+                fprintf(stderr, "Consumer received SIGUSR1.\n");
+                return;
+        } else {
+                fprintf(stderr, "Consumer: No handler for for signal %d?!\n",
+                        the_signal);
+                return;
+        }
+}
+If we replace these two handler then with one handler then it might be difficult to identify which one of the both has got error and you will loss the error check status of any one.
+We also may not be able to trace the exact place from where we are getting the “the_signal == SIGUSR1” status.
+  So it will be significant loss of functionality
+
+
+5.	[2] How could you modify 3000test.c so it can report on whether two device files are equal without actually accessing the underlying devices? Specify the changes you would make to 3000test.c rather than doing this from scratch.
+Answer: It can be done by comparing device numbers.
+Take to file pointer
+struct stat statbuf;
+struct stat statbuf1;
+char *fn;
+char *fn1;
+fn = argv[1];
+fn1 = argv[2];
+  
+        if (stat(fn, &statbuf)) {
+                report_error(strerror(errno));
+        }
+        if (stat(fn1, &statbuf1)) {
+                report_error(strerror(errno));
+        }
+
+
+        len = statbuf.st_size;
+        len1 = statbuf1.st_size;
+if(statbuf.st_ino==statbuf1.st_ino)
+     printf(“%s and % files are same”,fn,fn1);
+else
+     printf(“%s and % files are not same”,fn,fn1);
+	
+6.	[2] Does the MAP_SHARED flag on line 60 of 3000test.c (inside the call to mmap) make a significant difference in its execution? Specifically, what happens when you remove it or changed it to MAP_PRIVATE? Why?
+Answer: When using MAP_PRIVATE versus MAP_SHARED only makes a difference if the process forks a child that also uses the mapped memory block.
+If you use MAP_PRIVATE, the mapped memory is marked copy-on-write, so changes made by one of the processs will not be seen by the other process.
+If you use MAP_SHARED, the mapped memory is shared by both processs, so they can see each other's changes.
+malloc() uses MAP_PRIVATE so that the parent and child can continue to use the mapped memory for their heaps without needing to synchronize updates. It behaves just like the data segment that's used for the normal heap.
+
+7.	[2] When a file is mmap'd into memory, when is its contents loaded from disk? How can you verify this using 3000test?
+Answer: Now, you can actually consider mmap() to be a separate
+issue from caching - and Linux used to do it long ago.
+We had a purely-internal "buffer cache" that was used for
+disk caching, and then if somebody mmap'ed a file we
+would allocate a page for the mmap
+8.	[2] What is one way you can modify 3000pc so the consumer consumes exactly as fast as the producer produces (i.e., the producer and the consumer move in lock step?) Your modification should not involve sleeping (by either the producer or the consumer).
+Answer: in producer method in place of sleep(1) can use wait_for_consumer(s) and the same with the Consumer method  instead of sleep can use wait_for_producer(s) 
+9.	[2] Which is faster, /dev/urandom or /dev/random? What evidence do you have for this difference based on code that you ran (3000random or other programs)?
+Answer: By default these commands use an internal pseudorandom generator initialized by a small amount of entropy, but can be directed to use an external source with the --random-source=file option. An error is reported if file does not contain enough bytes.
+For example, the device file /dev/urandom could be used as the source of random data. Typically, this device gathers environmental noise from device drivers and other sources into an entropy pool, and uses the pool to generate random bits. If the pool is short of data, the device reuses the internal pool to produce more bits, using a cryptographically secure pseudorandom number generator. But be aware that this device is not designed for bulk random data generation and is relatively slow.
+
+
+
+10.	[2] How does the behavior of 3000pc change if you delete lines 149 and 152 (the if statement in wakeup_consumer())? Why?
+Answer: Consumer will be gone to infinite Waiting time and won’t be free
+Because wakeup_consumer() set the waiting time of consumer to zero means consumer is ready for consume the resources.
+
+
+11.	[2] What happens if you delete line 231 (the call to wakeup_producer()) in 3000pc? Why?
+Answer: Producer will be gone to infinite Waiting time and won’t be free
+Because wakeup_producer() set the waiting time of producer to zero means producer is ready for produce.
+12.	[2] How does the behavior of the program change if you change QUEUESIZE to 8? What about 128?
