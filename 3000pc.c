@@ -252,6 +252,7 @@ void producer(shared *s, int event_count, int producer_delay_interval)
                 queue_word(word, s);
                 if (producer_delay_interval > 0) {
                         if (i % producer_delay_interval == 0) {
+                               // wait_for_consumer(s); //uncomment this line if want to make speed of consumer and producer same.
                                 sleep(1);
                         }
                 }
