@@ -1,3 +1,62 @@
+question 4:
+text:wxy+z*+a-
+
+stack:push:wxy
+pop x,y
+result=x+y
+stack:push:w(x+y)z*
+result=(x+y)*z
+stack:push:w((x+y)*z)+
+pop ((x+y)*z),w
+result=((x+y)*z)+w
+stack:push:(((x+y)*z)+w)a-
+result=(((x+y)*z)+w)-a
+w=5,x=10,y=3,z=2,a=11
+result=(((10+3)*2)+5)-11=31-11=20
+
+question 5: a+b/(c*(x-y))+z
+
+ 
+
+	current symbol            operator stack         postfix string
+
+1       a							a
+
+2       +  			    +                           a
+
+3       b                           +				ab
+
+4       /                            +/				ab	
+
+5       (                           +/( 			ab
+
+6       c			    +/(                         abc	
+
+7	*			    +/(*			abc
+
+8	(			    +/(*(			abc
+
+9	x							abcx
+
+10	-			    +/(*(-                      abcx
+
+11      y							abcxy
+
+12     )                            +/(*                        abcxy-
+
+13     )                            +/                          abcxy-*
+
+14     +                            +                           abcxy-*/+
+
+15    z                             +                           abcxy-*/+z
+
+16                                  +                           abcxy-*/+z+          
+			         
+	a b c x y - * / + z +	
+
+*************************************************************************************************************************************
+
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
