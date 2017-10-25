@@ -1,0 +1,69 @@
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+  public class Assignment3{
+      public static String  recursion(String text){
+          String output="";
+          String cmd="";
+          
+           Matcher matcher = Pattern.compile("%\\w+").matcher(text);
+            int startIndex=0;
+            int endIndex=0;
+            if(matcher.find()) {
+                cmd=matcher.group();
+                startIndex= matcher.start();
+                endIndex=matcher.end();
+            }
+            
+          if(!text.contains("%"))
+            output=text;
+          else{
+              output=text.substring(0,startIndex);
+              int stopcmd=text.indexOf("%STOP");
+              String cmdtext=text.substring(endIndex,stopcmd+5);
+              String remainingtext=text.substring(stopcmd+5);
+             if(cmd.equals("%CAPS"))
+                    output=output+capitalize(recursion(cmdtext));
+              else if(cmd.equals("%STAR"))
+                    output=output+star(recursion(cmdtext));
+              else if(cmd.equals("%CHOP"))
+                    output=output+chop(recursion(cmdtext));
+             else if(cmd.equals("%GROW"))
+                    output=output+grow(recursion(cmdtext)); 
+             
+                output=output+recursion(remainingtext);
+               // System.out.println(remainingtext);
+          }  
+          return output;
+      }
+      public static String capitalize(String text){
+          String output= text.toUpperCase();
+          //System.out.println("capitalize "+output);
+          return output;
+      }
+      public static String star(String text){
+          String output= "*"+text+"*";
+           //System.out.println("star "+output);
+          return  output;
+      }
+      public static String chop(String text){
+          String output=text.substring(0,text.length()-2);
+          // System.out.println("chop "+output);
+          return output;
+      }
+      public static String grow(String text){
+          String output="";
+          for(int i=0;i<text.length();i++)
+                    output+=text.charAt(i)+" ";
+                    // System.out.println("grow "+output);
+          return output;
+      }
+      public static void main (String[] args) {
+          //recursion("hi #how are # you");
+        //String text="This %CAPS is %GROW an %STAR example %STOP line %CHOP of text %STOP. ";
+        //text=text.substring(text.indexOf("%STOP")+6);
+        //System.out.println(text);
+      
+         System.out.println(recursion("This %CAPS is %GROW an %STAR example %STOP line %CHOP of text %STOP. "));
+      }
+  }
