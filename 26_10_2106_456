@@ -95,6 +95,7 @@ class Freight:
         self.from_customer=from_customer
         self.weight=weight
         self.distance=distance
+        self.Freight_charge=0
     def validate_weight(self):
         if self.weight % 5 == 0:
             return True
@@ -140,11 +141,12 @@ class Freight:
     def get_distance(self):
         return self.distance
 #-----------main -----------
-#r_customer=Customer(100000,' recipient Customer1','address1')
-#f_customer=Customer(100001,'from Customer1','address2')
-#f1=Freight(r_customer,f_customer,40,1000)
-#if f1.forward_cargo():
-    #print(str(f1.get_freight_id()),str(f1.Freight_charge()))
+r_customer=Customer(100000,' recipient Customer1','address1')
+f_customer=Customer(100001,'from Customer1','address2')
+f1=Freight(r_customer,f_customer,40,1000)
+if f1.forward_cargo():
+    print("Freight id: ",f1.get_freight_id())
+    print("Freight charge: ",f1.get_freight_charge())
 ***************************Assignment 6***********************************************
   class Multiplex:
     list_movie_name=[]
