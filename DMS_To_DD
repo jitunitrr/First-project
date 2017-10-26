@@ -1,0 +1,9 @@
+def convert_dms_to_dd(tup1):
+    DD = int(tup1[0]) + int((tup1[1]/60)) + int((tup1[2]/3600))
+    return DD
+#-------------main---------------
+input1=raw_input('Please enter a latitude of longitude value in DMS')
+print(input1)
+print("The input value is in DMS form.")
+print("Its DD form is ")
+print(convert_dms_to_dd(input1))
