@@ -146,4 +146,25 @@ class Freight:
 #if f1.forward_cargo():
     #print(str(f1.get_freight_id()),str(f1.Freight_charge()))
 ***************************Assignment 6***********************************************
+  class Multiplex:
+    list_movie_name=[]
+    list_total_tickets=[]
+    list_total_pnce=[]
+    list_last_seat_number=[]
+    
+    def __init__(self,seat_number,total_price):
+        self.seat_number=seat_number
+        self.total_price=total_price
+    def  generate_seat_number(self,movie_index,number_of_tickets):
+    def  check_seat_availability(self,movie_index,number_of_tickets):  
+    def  calculate_ticket_pnce(self,movie_index,number_of_tickets):
+    def  calculate_ticket_pnce(self,movie_name,number_of_tickets):     
         
+    def get_seat_numbers(self):
+        seat_numbers=[]
+      return self.seat_numbers    
+      
+    def get_total_pnce(self):
+        total_pnce=0
+       return self.get_total_pnce
+   
