@@ -36,3 +36,29 @@ dd = parse_dms("36°57'9' N 110°4'21' W")
 
 print(dd)
 print(dd2dms(dd[0]))
+*************************************main**************************
+import re
+
+
+def dms2dd(tup1):
+    dd = float(tup1[0]) + float(tup1[1])/60 + float(tup1[2])/(60*60);
+    return dd;
+
+def dd2dms(deg):
+    d = int(deg)
+    md = abs(deg - d) * 60
+    m = int(md)
+    sd = (md - m) * 60
+    return [d, m, sd]
+
+#tup1=(-30,30,0)
+print('Please enter a latitude or longitude value in D,M,S')
+tup1=tuple(int(x.strip()) for x in input().split(','))
+lat = dms2dd(tup1)
+print('The input value is in DMS form')
+print('Its DD form is '+lat)
+
+input1=input('Please enter a latitude or longitude value in DD')
+print('The input value is in DD form')
+print('Its DMS form is '+dd2dms(input1))
+
