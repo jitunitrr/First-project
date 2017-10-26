@@ -1,0 +1,72 @@
+***************************Assignment 4***********************************************
+class Flower:
+   
+    def __init__(self,flower_name,price_per_kg,stock_available):
+      self.flower_name = flower_name
+      self.price_per_kg = price_per_kg
+      self.stock_available=stock_available
+      
+    def getFlower_name(self):
+      return self.flower_name    
+      
+    def setFlower_name(self,flower_name):
+       self.flower_name=flower_name
+       
+    def getPrice_per_kg(self):
+       return self.price_per_kg
+       
+    def setPrice_per_kg(self,price_per_kg):  
+       self.price_per_kg=price_per_kg
+       
+    def getStock_available(self):
+       return self.setStock_available
+       
+    def setStock_available(self,setStock_available):  
+       self.stock_available=stock_available
+       
+    def validate_flower(self):
+       if self.flower_name=='Orchid' or self.flower_name=='Rose' or self.flower_name=='Jasmine':
+          return True
+       else:
+          return False
+          
+
+    def validate_stock(self,required_quantity):
+        if self.stock_available >= required_quantity:
+           return True
+        else:
+           return False
+    def sell_flower(self,required_quantity):
+        if self.validate_flower() and self.validate_stock(required_quantity):
+          self.stock_available=self.stock_available - required_quantity
+          return True
+        else:
+            return False
+          
+    def check_level(self):
+     if self.flower_name=='Orchid' and self.stock_available<15:
+        return True
+     elif elf.flower_name=='Rose' and self.stock_available<25:
+        return True
+     elif self.flower_name=='Jasmine' and self.stock_available<40:
+        return True
+     else:
+       return False
+       
+# object creation
+f1=Flower('Rose',60,100)
+#f1.sell_flower('Rose')
+#f1.setPrice_per_kg(60)
+#f1.setStock_available(100)
+name='Rose'
+quantity=50
+print(f1.getFlower_name())
+print(f1.sell_flower(quantity))
+if f1.getFlower_name()=='Rose' and f1.sell_flower(quantity):
+   print("sell success..")
+else:
+   print("not sell")
+       
+***************************Assignment 5***********************************************
+***************************Assignment 6***********************************************
+        
