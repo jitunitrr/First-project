@@ -1,3 +1,35 @@
+***start**************************************************************
+import re
+# function for converting dms to dd
+def dms2dd(tup1):
+    dd = float(tup1[0]) + float(tup1[1])/60 + float(tup1[2])/(60*60);
+    return dd;
+# function for converting dd to dms
+def dd2dms(deg):
+    d = int(deg)
+    md = abs(deg - d) * 60
+    m = int(md)
+    sd = (md - m) * 60
+    return [d, m, sd]
+
+# function for converting dms to dd
+print('Please enter a latitude or longitude value in D,M,S')
+# tup1 is a tuple for taking user input in D,M and S format
+tup1=tuple(int(x.strip()) for x in input().split(','))
+# dms2dd(tup1) will return DD value after convertion
+output1 = dms2dd(tup1)
+print('\nThe input value is in DMS form.')
+print('Its DD form is ',output1)
+
+input1=input('\nPlease enter a latitude or longitude value in DD')
+print('\nThe input value is in DD form.')
+# dd2dms(float(input1)) will return D,M and S  value after convertion
+output2=dd2dms(float(input1))
+print('Its DMS form is ',output2[0],output2[1],int(output2[2]))
+
+
+
+***********************************************************************end***
 def convert_dms_to_dd(tup1):
     DD = int(tup1[0]) + int((tup1[1]/60)) + int((tup1[2]/3600))
     return DD
