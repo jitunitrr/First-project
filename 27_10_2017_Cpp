@@ -1,0 +1,57 @@
+#include<iostream>
+#include<stdlib.h>
+#include<string>
+#include <sstream>
+using namespace std;
+// This wil provide the program user some basic informtion about the program.
+void DisplayApplicationInformation(){
+    cout<<endl<<"You need to construct a program that prompts the user for the following:"<<endl;
+    cout<<"your name,which will be a string data type;"<<endl;
+    cout<<"your age,which will be a integer data type;"<<endl;
+    cout<<"your car mileage,which will be a double data type;and"<<endl;
+    cout<<"a display of the collected informtion."<<endl;
+    
+}
+// This will provide a meaningful output separator between different scetions of the the program output.
+void DisplayDivider(string output){
+    cout<<output;
+}
+void TerminateApplication(){
+    cout<<endl<<"Application Terminated...";
+    exit(0);
+    
+}
+// function to take user input and return string
+std::string GetInput(){
+    std::string name;
+    int age;
+    double gasMileage;
+    cout<<endl<<"Enter your name"<<endl;
+    cin >>name;
+    cout<<"Enter your age"<<endl;
+    cin >>age;
+    cout<<"Enter gas mileage of your car"<<endl;
+    cin >>gasMileage;
+    //stringstreams can be used to both read strings and write data into strings
+    stringstream ss;
+    //ss <<name<<","<<age<<","<<gasMileage;
+    ss <<"your name: "<<name<<",age: "<< age <<" Yrs."<<endl<<"your car mileage:"<<gasMileage<<" Km/hrs";
+    // convert str to string
+    string s = ss.str();
+    return s;
+}
+
+int main(){
+    // This function call will display the basic informtion about the program.
+    DisplayApplicationInformation();
+    
+    // GetInput() function is called for prompt user input and will return the collected informtion in form of string. 
+    string output=GetInput();
+    
+    //DisplayDivider() function will dis the output of user informtion
+    DisplayDivider(output);
+    
+    // This function will Terminate the Application.
+    TerminateApplication();
+    return 1;
+}
