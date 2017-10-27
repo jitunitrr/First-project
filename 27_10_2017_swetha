@@ -1,0 +1,76 @@
+assignment 7:
+class Customer:
+    def __init__(self,customer_name):
+      self.customer_name = customer_name
+      self.payment_status=None
+    def  pays_bill(self,bill):
+        self.payment_status='Paid'
+        print(self.customer_name,bill.get_bill_id(),bill.get_bill_amount())
+        
+    def get_customer_name(self):
+       return self.customer_name
+       
+    def get_payment_status(self):
+       return self.payment_status
+       
+class Bill:
+    counter=1000
+    def __init__(self):
+        self.bill_id=""
+        self.bill_amount=0
+        
+    def generate_bill_amount(self,item_quantity,items):
+        
+        Bill.counter+=1
+        for item in items:
+            self.bill_amount=self.bill_amount+item_quantity.get(item.get_item_id()) * item.get_price_per_quantity()
+            self.bill_id='B'+ str(Bill.counter)
+        return self.bill_amount
+        
+    def get_bill_id(self):
+        return self.bill_id
+  
+    def get_bill_amount(self):
+        return self.bill_amount
+   
+        
+class Item:
+    def __init__(self,item_id,description,price_per_quantity):
+        self.item_id=item_id
+        self.description=description
+        self.price_per_quantity=price_per_quantity
+        
+    def get_item_id(self):
+        return self.item_id
+  
+    def get_description(self):
+        return self.description
+        
+    def get_price_per_quantity(self):
+        return self.price_per_quantity    
+        
+        
+#-----------main -----------
+# create object of Customer class
+c1=Customer('customer1')
+
+# item creation
+item1=Item('item1','description 1',20)
+item2=Item('item2','description 2',30)
+item3=Item('item3','description 3',40)
+item4=Item('item4','description 4',50)
+
+# add item to list
+items=[item1,item2,item3,item4]
+# create dictionary of item_id:quantity
+item_quantity={'item1':1,'item2':2,'item3':3,'item4':4}
+
+#create object of Bill class
+bill1=Bill()
+bill1.generate_bill_amount(item_quantity,items)
+c1.pays_bill(bill1)
+*********************************************************************************************************
+Assignment 8
+**********************************************************************************************************
+
+ 
