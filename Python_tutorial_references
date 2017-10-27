@@ -43,3 +43,28 @@ Comments in Python
 A hash sign (#) that is not inside a string literal begins a comment.
         # First comment
 print "Hello, Python!" # second comment
+---------------------------------------------------------------------------------------------
+Accessing Values in Dictionary:
+----------------------------------------------------------------------------
+To access dictionary elements, you can use the familiar square brackets along with the key to obtain its value. Following is a simple example −
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print "dict['Name']: ", dict['Name']
+print "dict['Age']: ", dict['Age']
+--------------------------
+Updating Dictionary
+------------------------
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+dict['Age'] = 8; # update existing entry
+dict['School'] = "DPS School"; # Add new entry
+
+
+print "dict['Age']: ", dict['Age']
+print "dict['School']: ", dict['School']
+----------------------
+delete dictionary
+------------------------------
+
+
