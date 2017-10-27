@@ -72,5 +72,49 @@ c1.pays_bill(bill1)
 *********************************************************************************************************
 Assignment 8
 **********************************************************************************************************
-
+class Customer:
+    def __init__(self,customer_name,cust_type):
+      self.customer_name = customer_name
+      self.cust_type=cust_type
+      
+    def get_customer_name(self):
+       return self.customer_name
+       
+    def get_cust_type(self):
+       return self.cust_type
+       
+class Purchase:
+    counter=1000
+    def __init__(self,customer1,fruit_name,quantity):
+        self.purchase_id=None
+        self.customer1=customer1
+        self.fruit_name=fruit_name
+        self.quantity=quantity
+        
+    def get_purchase_id(self):
+        return self.purchase_id
+  
+    def get_customer(self):
+        return self.customer1
+        
+    def get_quantity(self): 
+        return self.quantity
+    def calculate_pnce(self):    
+   
+        
+class Fruit_Info:
+    fruit_name_list
+    fruit_price_list
+    
+    def get_fruit_price(self,fruit_name):
+        return self.fruit_name 
+        
+    def get_fruit_name_list(self):
+        return Fruit_Info.fruit_name_list
+  
+    def fruit_price_list(self):
+        return Fruit_Info.fruit_price_list
+      *******************************************************************************  
+ Assignment 9       
+*******************************************************************************
  
