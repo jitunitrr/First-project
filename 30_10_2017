@@ -52,3 +52,107 @@ class Silk(Apparel):
              self.points=3
     def get_points():
         return self.points
+
+#************Assignment 10***********************************************************************************
+# Customer class
+class Customer:
+    def __init__(self,customer_name,quantity):
+        self.customer_name=customer_name
+        self.quantity=quantity
+        
+    def validate_quantity(self):
+        if self.quantity>=1 and self.quantity<=5:
+            return True
+        else:
+            return False
+        
+    def get_customer_name(self):
+        return self.customer_name
+        
+    def get_quantity(self):
+        return self.quantity
+# PizzaService class        
+class PizzaService:
+    counter=100
+    def __init__(self,customer,pizza_type,additional_topping):
+        self.customer=customer
+        self.pizza_type=pizza_type
+        self.additional_topping=additional_topping
+    def validate_pizza_type(self):
+        if self.pizza_type=='small' or self.pizza_type=='medium':
+            return True
+        else:
+            return False
+            
+    def calculate_pizza_cost(self):
+        pizza_cost=-1
+        if PizzaService.get_customer(self).validate_quantity() and PizzaService.validate_pizza_type(self):
+            if self.pizza_type=='small' and self.additional_topping==True:
+                pizza_cost=150+35;
+            elif self.pizza_type=='small' and self.additional_topping==False:
+                pizza_cost=150
+            elif self.pizza_type=='medium' and self.additional_topping==True:
+                pizza_cost=200+50;
+            elif self.pizza_type=='medium' and self.additional_topping==False:
+                pizza_cost=200
+            PizzaService.counter=PizzaService.counter+1
+            self.service_id='S'+str(PizzaService.counter)
+        else:
+            pizza_cost=-1
+        return pizza_cost    
+   
+    def get_service_id(self):
+        return self.service_id
+        
+    def get_pizza_type(self):
+        return self.pizza_type
+        
+    def get_customer(self):
+        return self.customer
+        
+    def get_additional_topping(self):
+        return self.additional_topping
+        
+# Doordelivery class        
+class Doordelivery(PizzaService):
+    def __init__(self,customer,pizza_type,additional_topping,distance_in_kms):
+        self.customer=customer
+        self.pizza_type=pizza_type
+        self.additional_topping=additional_topping
+        self.distance_in_kms=distance_in_kms
+        
+    def validate_distance_in_kms(self):
+        if self.distance_in_kms>=1 and self.distance_in_kms<=10:
+            return True
+        else:
+            return False
+            
+    def calculate_pizza_cost(self):
+        if Doordelivery.validate_distance_in_kms(self):
+            pizza_cost=PizzaService.calculate_pizza_cost(self)
+            if pizza_cost>0:
+                if self.distance_in_kms>5:
+                    self.delivery_charge=12
+                else:
+                    self.delivery_charge=5
+                pizza_cost=pizza_cost+self.delivery_charge    
+                return pizza_cost
+        else:
+            return 0
+            
+    def get_delivery_charge(self):
+        return self.delivery_charge
+        
+    def get_distance_in_kms(self):
+        return self.distance_in_kms
+        
+#-----------------------------testing------------------------
+c1=Customer('Swetha',3)
+p1=PizzaService(c1,'small',True)
+d1=Doordelivery(c1,p1.get_pizza_type(),p1.get_additional_topping(),9)
+print("Customer name: "+c1.get_customer_name())
+print("pizza Type:"+p1.get_pizza_type())
+print("pizza cost: ",d1.calculate_pizza_cost())
+
+
+        
