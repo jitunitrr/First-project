@@ -1,0 +1,54 @@
+#************Assignment 8*************
+class Apparel:
+    counter=100
+    def __init__(self,price,item_type):
+        self.price=price
+        slef.item_type=item_type
+        Apparel.counter=Apparel.counter+1
+        if item_type=="Cotton":
+            self.item_id='C'+str(counter)
+        elif item_type=="Silk":
+            self.item_id='S'+str(counter)
+       
+    def calcualte_price(self):
+        self.price=self.price+self.price *.05
+       
+    def get_item_id(self):
+       return self.item_id
+       
+    def get_price(self):
+       return self.price
+       
+    def get_item_type(self):
+       return self.item_type
+       
+    def set_price(self,price):
+       self.price=price   
+       
+class Cotton(Apparel):
+    def __init__(self,price,discount):
+        Apparel.__init__(self,price,"Cotton")
+        self.price=price
+        self.discount=discount
+        
+    def calcualte_price(self):
+        self.price=Apparel.get_price()+(Apparel.get_price()*.05)-discount
+        Apparel.set_price(  self.price)
+        
+    def get_discount():
+        return self.discount
+        
+class Silk(Apparel):
+    def __init__(self,price):
+        Apparel.__init__(self,price,"Silk")
+        self.price=price
+        
+    def calcualte_price(self):
+        self.price=Apparel.get_price()+(Apparel.get_price()*.1)-discount
+        Apparel.set_price(  self.price)
+        if  self.price > 10000:
+            self.points=10
+        else:
+             self.points=3
+    def get_points():
+        return self.points
