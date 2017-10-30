@@ -1,4 +1,4 @@
-#************Assignment 8*************
+#************Assignment 9*************
 class Apparel:
     counter=100
     def __init__(self,price,item_type):
