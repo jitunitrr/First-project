@@ -1,0 +1,140 @@
+/**
+
+ *
+ * @version 1.0
+ * @date 	4th Nov, 2017
+ * This class is used to check the gcd of sum of two subset is equal to Target value.
+ * step:-1 Read the input from  file in.txt(value is separated with spaces).
+ * step:-2 Get the target value that is need to checked with calculated GCD of sum of two subset.
+ * step:-3 Stored the input in form of linkedList.
+ * step:-4 Calculate length of linked list and set into length variable.
+ * step:-5 Call the isGcdOfTwoSubsetSum method recursively by passing the target value and changing value of bits that is used for get  all possibilities of subset.
+ * step:-6 If GCD of sum of two subset is equal to target value then print Yes else NO. 
+ */
+import java.io.File;
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Target
+ {
+	Node head;
+	int length = 0;
+	boolean gcd=false;
+	static Scanner stdin = new Scanner(System.in);
+	
+	class Node {
+		int data;
+		Node next;
+		Node(int d) {
+			data = d;
+			next = null;
+		}
+	}
+
+	/**
+	 * This method is used to appending a new node to linked list. here, creation of linked list of
+	 * Input read from in.txt file
+	 * 
+	 * @param data
+	 */
+	public void append(int data) {
+		Node newNode = new Node(data);
+		if (head == null) {
+			head = new Node(data);
+			return;
+		}
+		newNode.next = null;
+		Node last = head;
+		while (last.next != null)
+			last = last.next;
+		last.next = newNode;
+		return;
+	}
+
+	/**
+	 * calculated length of linked list and set the length variable.
+	 */
+	public void setLength() {
+		Node tnode = head;
+		while (tnode != null) {
+			tnode = tnode.next;
+			length++;
+		}
+	}
+
+	/**
+	 * This method is used to calculate the gcd of two numbers.
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	private static int gcd(int num1, int num2) {
+		BigInteger bignNum1 = new BigInteger(String.valueOf(num1));
+		BigInteger bignNum2 = new BigInteger(String.valueOf(num2));
+		return bignNum1.gcd(bignNum2).intValue();
+	}
+
+	/**
+	 * This method is used to check the GCD of sum of two subset is equal to target value. If
+	 * calculated GCD of two number(sum of two subset respectively) is equal to target value then return YES else NO.
+	 * 
+	 * @param target
+	 * @param bits
+	 * @return
+	 */
+	String isGcdOfTwoSubsetSum(int target, int bits) {
+		if (bits > 0) {
+			Node tnode = head;
+			int sum1 = 0, sum2 = 0;
+			int count1 = 0, count2 = 0;
+			for (int i = 0; i < length; i++) {
+				if (String.format("%" + length + "s", Integer.toBinaryString(bits)).replace(' ', '0').substring(i, i + 1).equals("0")) {
+					sum1 = sum1 + tnode.data;
+					tnode = tnode.next;
+					count1++;
+				} else {
+					sum2 = sum2 + tnode.data;
+					tnode = tnode.next;
+					count2++;
+				}
+			}
+			if (count1 < length && count2 < length) {
+				if (gcd(sum1, sum2) == target) {
+					gcd=true;
+				}
+			}
+			bits = bits - 1;
+			isGcdOfTwoSubsetSum(target, bits);
+		}
+		if(gcd)
+		return "YES";
+		else 
+			return "NO";
+			
+	}
+
+	public static void main(String[] args) {
+		try {
+			System.out.print("Enter path of File");
+			Scanner scanner = new Scanner(new File(stdin.nextLine()));
+			System.out.print("Enter Target Value");
+			int target=stdin.nextInt();
+			Target llist = new Target();
+			while (scanner.hasNextInt()) {
+				llist.append(scanner.nextInt());
+			}
+			
+			llist.setLength();
+			int bits = 1;
+			for (int i = 1; i <= llist.length; i++) {
+				bits = bits * 2;
+			}
+			System.out.println(llist.isGcdOfTwoSubsetSum(target, bits));
+			scanner.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+}
