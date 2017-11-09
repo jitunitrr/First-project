@@ -69,6 +69,17 @@ public class Main {
 		System.out.println("Triangle Area: " + tri2.TriangleArea());
 		System.out.println("Triangle Perimeter: " + tri2.TrianglePerimeter());
 		new MyFinalize().finalize();
+		System.out.println("----------------For Polygon------------------------------");
+
+		// Creating object of Triangle class..
+		 double verticesX[]={4,9,11,2};
+		double verticesY[]={10,7,2,2};
+   		Polygon p1=new Polygon(verticesX,verticesY);
+    		System.out.println("Co-ordinates of Polygon(X,y)");
+    		System.out.println(p1);
+    		System.out.println("Area Of Polygon : "+p1.area());
+    		System.out.println("Perimeter of polygon: "+p1.perimeter());
+		new MyFinalize().finalize();
 
 	}
 }
