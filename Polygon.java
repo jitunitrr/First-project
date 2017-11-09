@@ -1,5 +1,4 @@
-
-class Polygon {
+class Polygon extends Shape {
 	private double verticesX[];
 	private double verticesY[];
 	private int numberOfVertices;

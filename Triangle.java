@@ -1,5 +1,4 @@
-
-public class Triangle {
+public class Triangle extends Polygon {
 	// declaring attributees...
 	private static double x1;
 	private static double y1;

@@ -1,4 +1,4 @@
-public class Rectangle{
+public class Rectangle extends Shape{
 	private double height;
 	private double width;
 	private String upperLeftCoordinates;
@@ -49,43 +49,3 @@ public class Rectangle{
 	}
 	
 }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
