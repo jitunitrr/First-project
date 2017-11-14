@@ -1,0 +1,44 @@
+CREATE TABLE Employee(
+    emp_no varchar2(50),
+    emp_fname varchar2(50),
+    emp_lname varchar2(50),
+    dept_no varchar2(50),
+    dept_name varchar2(50),
+    dept_location varchar2(50),
+    job_title varchar2(50),
+    job_begin date,
+    proj_no varchar2(20),
+    proj_name varchar2(20),
+    proj_budget int
+);
+INSERT INTO Employee values('18316','john','barrimore','d1','R&D','Dallas ,TX','Driver',TO_DATE('2015-06-01','YYYY-MM-DD'),'p2','Gemini',95000);
+INSERT INTO Employee values('28559','Sybill','Moser','d1','R&D','Dallas ,TX',null,TO_DATE('2015-08-01','YYYY-MM-DD'),'p1','Anchor',120000);
+INSERT INTO Employee values('28559','Sybill','Moser','d1','R&D','Dallas ,TX','Engineer',TO_DATE('2016-02-01','YYYY-MM-DD'),'p2','Gemini',95000);
+INSERT INTO Employee values('33355','peter','Fisher','d1','R&D','Dallas ,TX',null,null,null,null,null);
+INSERT INTO Employee values('2581','Elke','Hansel','d2','Accounting','Tampa ,FL','Analyst',TO_DATE('2015-10-15','YYYY-MM-DD'),'p3','Jet',186500);
+
+INSERT INTO Employee values('9031','Elsa','Bertoni','d2','Accounting','Tampa ,FL','Manager',TO_DATE('2015-04-15','YYYY-MM-DD'),'p1','Anchor',120000);
+INSERT INTO Employee values('9031','Elsa','Bertoni','d2','Accounting','Tampa ,FL','Engineer',TO_DATE('2014-11-15','YYYY-MM-DD'),'p1','Anchor',120000);
+INSERT INTO Employee values('9031','James','Moser','d1','Accounting','Tampa ,FL','Engineer',TO_DATE('2015-01-04','YYYY-MM-DD'),'p3','Jet',186500);
+INSERT INTO Employee values('29346','James','Fisher','d1','Accounting','Tampa ,FL',null,TO_DATE('2014-12-15','YYYY-MM-DD'),'p1','Anchor',120000);
+INSERT INTO Employee values('29346','Kathie','Fisher','d1','Accounting','Tampa ,FL','Analyst',TO_DATE('2015-09-25','YYYY-MM-DD'),'p2','Gemini',95000);
+
+INSERT INTO Employee values('30606','Kathie','Willson','d2','Accounting','Tampa ,FL','Analyst',TO_DATE('2015-09-25','YYYY-MM-DD'),'p11','Sea Star',null);
+INSERT INTO Employee values('30606','Kathie','Willson','d2','Accounting','Tampa ,FL','Programmer',null,'p20','Hunter-II',null);
+INSERT INTO Employee values('10102','Ann','Jones','d3','Marketing','Miami ,FL','Analyst',TO_DATE('2014-10-01','YYYY-MM-DD'),'p2','Anchor',120000);
+INSERT INTO Employee values('10102','Ann','Jones','d3','Marketing','Miami ,FL','Manager',TO_DATE('2012-01-01','YYYY-MM-DD'),'p3','jet',186500);
+INSERT INTO Employee values('25348','Matthew','Smith','d3','Marketing','Miami ,FL','Engineer',TO_DATE('2015-02-15','YYYY-MM-DD'),'p2','Gemini',95000);
+
+INSERT INTO Employee values(null,null,null,'d4','Shipping','Atlanta ,GA',null,null,null,null,null);
+INSERT INTO Employee values('31189','Julia','White','d5','Sales','Tampa ,Fl',null,null,null,null,null);
+INSERT INTO Employee values(null,null,null,'d6','Customer Services','St.Louis,MO',null,null,null,null,null);
+INSERT INTO Employee values('5500','Paul','Fisher',null,null,null,'QA',null,'p11','Sea Star',null);
+INSERT INTO Employee values('5500','Paul','Fisher',null,null,null,'Programmer',TO_DATE('2016-11-09','YYYY-MM-DD'),'p14','Blue Sky',300000);
+
+INSERT INTO Employee values('5500','Paul','Fisher',null,null,null,'QA',TO_DATE('2016-03-22','YYYY-MM-DD'),'p2','Gemini',95000);
+INSERT INTO Employee values('5500','Paul','Fisher',null,null,null,'Manager',TO_DATE('2013-02-18','YYYY-MM-DD'),'p20','Hunter-II',null);
+INSERT INTO Employee values('34427','Matthew','Arrow',null,null,null,null,null,null,null,null);
+INSERT INTO Employee values(null,null,null,null,null,null,null,null,'p15','Winner',300000);
+
+
+
