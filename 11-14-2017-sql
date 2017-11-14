@@ -40,7 +40,26 @@ INSERT INTO Employee values('5500','Paul','Fisher',null,null,null,'Manager',TO_D
 INSERT INTO Employee values('34427','Matthew','Arrow',null,null,null,null,null,null,null,null);
 INSERT INTO Employee values(null,null,null,null,null,null,null,null,'p15','Winner',300000);
 
-
+Query 1:
 Select dept_name,job_title,count(*) as TotalJobs from Employee where job_title is not null and dept_name is not null group by dept_name,job_title order by dept_name;
 
+delete from Employee;
+Query 2:
+    a) using subquery
+        select dept_no FROM Employee where dept_no in(select dept_no from Employee group by dept_no having count(emp_no)<=0);
+    b) using OUTER JOIN 
+      select e1.dept_no from Employee e1 RIGHT OUTER JOIN (select dept_no  dn from Employee group by dept_no having count(emp_no)<=0)   e2 ON  e1.dept_no=e2.dn;
+    c) using set operator
+      select dept_no from Employee  intersect select dept_no from Employee group by dept_no having count(emp_no)<=0;
+
+
+Query 3:
+SELECT job_title,count(proj_no) from Employee where job_title is not null and proj_budget is not null and extract( year from job_begin)='2015' group by job_title order by job_title;
+
+Query 4:
+    UPDATE proj_budget=proj_budget
+    
+Query 5:
+    SELECT dept_no,dept_name,count(emp_no) as "TotalEmpWithProj" FROM Employee where proj_no is not null  and dept_no is not null    group by dept_no,dept_name having count(emp_no)=
+    (SELECT min(count(emp_no)) FROM Employee where proj_no is not null  and dept_no is not null    group by dept_no,dept_name having count(emp_no)>0);
 
