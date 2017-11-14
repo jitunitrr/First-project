@@ -63,3 +63,26 @@ Query 5:
     SELECT dept_no,dept_name,count(emp_no) as "TotalEmpWithProj" FROM Employee where proj_no is not null  and dept_no is not null    group by dept_no,dept_name having count(emp_no)=
     (SELECT min(count(emp_no)) FROM Employee where proj_no is not null  and dept_no is not null    group by dept_no,dept_name having count(emp_no)>0);
 
+
+
+
+
+
+UPDATE Employee 
+set proj_budget=(CASE
+      WHEN proj_budget > 250000 THEN 1 
+      WHEN proj_budget > 150000 THEN 2 
+      WHEN proj_budget > 50000 THEN 3
+      ELSE 4
+    END)+proj_budget where proj_budget is not null;
+BEGIN TRAN
+   UPDATE Employee 
+    set proj_budget=(CASE
+      WHEN proj_budget > 250000 THEN 1 
+      WHEN proj_budget > 150000 THEN 2 
+      WHEN proj_budget > 50000 THEN 3
+      ELSE 4
+    END)+proj_budget where proj_budget is not null;
+    SELECT proj_no,budget_before_update budget_after_update
+     ROLLBACK TRAN;
+END TRAN;    
