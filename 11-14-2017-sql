@@ -91,6 +91,5 @@ BEGIN TRAN
       WHEN proj_budget > 50000 THEN 3
       ELSE 4
     END)+proj_budget where proj_budget is not null;
-    SELECT proj_no,budget_before_update budget_after_update
      ROLLBACK TRAN;
 END TRAN;    
