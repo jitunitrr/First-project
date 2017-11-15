@@ -57,7 +57,15 @@ Query 3:
 SELECT job_title,count(proj_no) from Employee where job_title is not null and proj_budget is not null and extract( year from job_begin)='2015' group by job_title order by job_title;
 
 Query 4:
-    UPDATE proj_budget=proj_budget
+    BEGIN
+  UPDATE Employee  
+  set Employee.proj_budget=(CASE
+      WHEN Employee.proj_budget > 250000 THEN 1 
+      WHEN Employee.proj_budget > 150000 THEN 2 
+      WHEN Employee.proj_budget > 50000 THEN 3
+      ELSE 4 
+      END)+Employee.proj_budget;
+END;
     
 Query 5:
     SELECT dept_no,dept_name,count(emp_no) as "TotalEmpWithProj" FROM Employee where proj_no is not null  and dept_no is not null    group by dept_no,dept_name having count(emp_no)=
